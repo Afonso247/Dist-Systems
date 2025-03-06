@@ -1,33 +1,33 @@
 <template>
     <div class="tasks">
-      <h1>My Tasks</h1>
+      <h1>Minhas Tarefas</h1>
       
       <div class="create-task">
-        <h2>Add New Task</h2>
+        <h2>Adicionar Nova Tarefa</h2>
         <form @submit.prevent="createTask">
           <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Título</label>
             <input type="text" id="title" v-model="newTask.title" required />
           </div>
           
           <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description">Descrição</label>
             <textarea id="description" v-model="newTask.description"></textarea>
           </div>
           
           <div class="form-group">
-            <label for="dueDate">Due Date</label>
+            <label for="dueDate">Data de Vencimento</label>
             <input type="date" id="dueDate" v-model="newTask.dueDate" />
           </div>
           
-          <button type="submit" :disabled="loading">Add Task</button>
+          <button type="submit" :disabled="loading">Adicionar Tarefa</button>
         </form>
       </div>
       
       <div class="task-list">
-        <h2>Your Tasks</h2>
-        <div v-if="loading" class="loading">Loading tasks...</div>
-        <div v-else-if="tasks.length === 0" class="empty">No tasks yet. Create your first one!</div>
+        <h2>Suas Tarefas</h2>
+        <div v-if="loading" class="loading">Carregando tarefas...</div>
+        <div v-else-if="tasks.length === 0" class="empty">Sem tarefas cadastradas...</div>
         
         <div v-else class="tasks-container">
           <div v-for="task in tasks" :key="task.id" class="task-card">
@@ -37,14 +37,14 @@
                 <button @click="toggleComplete(task)" :class="{ 'completed': task.completed }">
                   {{ task.completed ? 'Completed' : 'Mark Complete' }}
                 </button>
-                <button @click="deleteTask(task.id)" class="delete">Delete</button>
+                <button @click="deleteTask(task.id)" class="delete">Remover</button>
               </div>
             </div>
             
             <div class="task-body">
               <p v-if="task.description">{{ task.description }}</p>
               <p v-if="task.dueDate" class="due-date">
-                Due: {{ new Date(task.dueDate).toLocaleDateString() }}
+                Vence em: {{ new Date(task.dueDate).toLocaleDateString() }}
               </p>
             </div>
           </div>

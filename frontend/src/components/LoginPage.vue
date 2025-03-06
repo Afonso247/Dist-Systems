@@ -5,19 +5,19 @@
       
       <form @submit.prevent="login">
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">E-mail</label>
           <input type="email" id="email" v-model="email" required />
         </div>
         
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Senha</label>
           <input type="password" id="password" v-model="password" required />
         </div>
         
-        <button type="submit" :disabled="loading">{{ loading ? 'Loading...' : 'Login' }}</button>
+        <button type="submit" :disabled="loading">{{ loading ? 'Carregando...' : 'Login' }}</button>
       </form>
       
-      <p>Don't have an account? <router-link to="/register">Register</router-link></p>
+      <p>Não tem uma conta? <router-link to="/register">Registre-se</router-link></p>
     </div>
 </template>
 
