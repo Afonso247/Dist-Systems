@@ -1,24 +1,40 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
+  <div id="app">
+    <header>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/tasks" v-if="isAuthenticated">Tasks</router-link> |
+        <router-link to="/login" v-if="!isAuthenticated">Login</router-link>
+        <a href="#" @click="logout" v-if="isAuthenticated">Logout</a>
       </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    </header>
+    <main>
+      <RouterView />
+    </main>
+  </div>
 </template>
+
+<script>
+  import { getAuth, signOut } from 'firebase/auth'
+
+  export default {
+    computed: {
+      isAuthenticated() {
+        return getAuth().currentUser
+      }
+    },
+    methods: {
+      logout() {
+        try {
+          signOut(getAuth())
+          this.$router.push('/login')
+        } catch (error) {
+          console.error('Error logging out:', error)
+        }
+      }
+    }
+  }
+</script>
 
 <style scoped>
 header {

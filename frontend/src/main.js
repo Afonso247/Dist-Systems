@@ -3,7 +3,6 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
 import { initializeApp } from 'firebase/app'
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore'
 import { connectAuthEmulator, getAuth } from 'firebase/auth'
@@ -32,5 +31,4 @@ if (process.env.NODE_ENV === 'development') {
 const app = createApp(App)
 
 app.use(router)
-app.use(store)
 app.mount('#app')
