@@ -1,4 +1,7 @@
-FROM node:16-alpine
+FROM node:18-alpine
+
+# Install Java (required for Firebase emulators)
+RUN apk add --no-cache openjdk17-jre
 
 WORKDIR /app
 
