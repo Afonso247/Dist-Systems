@@ -22,14 +22,11 @@ const firebaseApp = initializeApp(firebaseConfig)
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp)
 
-// TODO: resolver o bug de Modo de Produção
 // Conectar emuladores
-// if (import.meta.env.NODE_ENV === 'development') {
-//     connectAuthEmulator(auth, import.meta.env.VITE_FIREBASE_AUTH_EMULATOR_URL || 'http://localhost:9099');
-//     connectFirestoreEmulator(db, 'localhost', 8080);
-// }
-connectAuthEmulator(auth, import.meta.env.VITE_FIREBASE_AUTH_EMULATOR_URL || 'http://localhost:9099');
-connectFirestoreEmulator(db, 'localhost', 8080);
+if (import.meta.env.DEV === true) {
+    connectAuthEmulator(auth, import.meta.env.VITE_FIREBASE_AUTH_EMULATOR_URL || 'http://localhost:9099');
+    connectFirestoreEmulator(db, 'localhost', 8080);
+}
 
 const app = createApp(App)
 
