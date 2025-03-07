@@ -14,4 +14,4 @@ COPY . .
 EXPOSE 9099 8080 4000
 
 # Start emulators
-CMD ["firebase", "emulators:start", "--project=task-manager", "--import=./data", "--export-on-exit=./data"]
+CMD ["firebase", "emulators:start", "--project=task-manager", "--import=./data", "--export-on-exit=./data", "--inspect-functions"]

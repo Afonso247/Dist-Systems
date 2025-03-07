@@ -23,8 +23,8 @@ const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp)
 
 // Conectar emuladores
-if (process.env.NODE_ENV === 'development') {
-    connectAuthEmulator(auth, process.env.VUE_APP_FIREBASE_AUTH_EMULATOR_URL || 'http://localhost:9099');
+if (import.meta.env.DEV === true) {
+    connectAuthEmulator(auth, import.meta.env.VITE_FIREBASE_AUTH_EMULATOR_URL || 'http://localhost:9099');
     connectFirestoreEmulator(db, 'localhost', 8080);
 }
 

@@ -73,7 +73,7 @@
       async fetchTasks() {
         this.loading = true
         try {
-          const response = await axios.get(`${process.env.VUE_APP_API_URL}/tasks`, {
+          const response = await axios.get(`${import.meta.env.VITE_API_URL}/tasks`, {
             headers: {
               Authorization: `Bearer ${getAuth().currentUser.accessToken}`
             }
@@ -87,7 +87,7 @@
       },
       async createTask() {
         try {
-          await axios.post(`${process.env.VUE_APP_API_URL}/tasks`, this.newTask, {
+          await axios.post(`${import.meta.env.VITE_API_URL}/tasks`, this.newTask, {
             headers: {
               Authorization: `Bearer ${getAuth().currentUser.accessToken}`
             }
@@ -102,7 +102,7 @@
       },
       async deleteTask(taskId) {
         try {
-          await axios.delete(`${process.env.VUE_APP_API_URL}/tasks/${taskId}`, {
+          await axios.delete(`${import.meta.env.VITE_API_URL}/tasks/${taskId}`, {
             headers: {
               Authorization: `Bearer ${getAuth().currentUser.accessToken}`
             }
@@ -114,7 +114,7 @@
       },
       async toggleComplete(task) {
         try {
-          await axios.put(`${process.env.VUE_APP_API_URL}/tasks/${task.id}`, {
+          await axios.put(`${import.meta.env.VITE_API_URL}/tasks/${task.id}`, {
             completed: !task.completed
           }, {
             headers: {

@@ -33,6 +33,9 @@
         return getAuth().currentUser
       },
     },
+    mounted() {
+      console.log('Variáveis de ambiente:', import.meta.env)
+    }
   }
 </script>
 
