@@ -13,6 +13,9 @@ const port = process.env.PORT || 3000;
 // Iniciar Firebase Admin
 admin.initializeApp({
   projectId: 'task-manager',
+  credential: process.env.NODE_ENV === 'development' 
+    ? admin.credential.applicationDefault() 
+    : admin.credential.cert(require('./service-account.json')), // Para produção
 });
 
 // Conectar emuladores
@@ -23,6 +26,14 @@ if (process.env.NODE_ENV === 'development') {
 
 const db = admin.firestore();
 const auth = admin.auth();
+
+if (process.env.NODE_ENV === 'development') {
+  const db = admin.firestore();
+  db.settings({
+    host: 'firebase-emulator:8080', // Nome do serviço no Docker Compose
+    ssl: false
+  });
+}
 
 // Middleware
 app.use(cors());
