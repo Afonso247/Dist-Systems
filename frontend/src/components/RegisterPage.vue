@@ -27,7 +27,7 @@
         <button type="submit" :disabled="loading">{{ loading ? 'Carregando...' : 'Registrar-se' }}</button>
       </form>
       
-      <p>Already have an account? <router-link to="/login">Login</router-link></p>
+      <p>Já possui uma conta? <router-link to="/login">Login</router-link></p>
     </div>
 </template>
 
