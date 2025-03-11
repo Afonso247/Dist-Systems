@@ -42,7 +42,7 @@
             </div>
             
             <div class="task-body">
-              <p v-if="task.description">{{ task.description }}</p>
+              <p v-if="task.description" class="description">{{ task.description }}</p>
               <p v-if="task.dueDate" class="due-date">
                 Vence em: {{ new Date(task.dueDate).toLocaleDateString() }}
               </p>
@@ -196,6 +196,7 @@ button:disabled {
 
 .task-header h3 {
   margin: 0;
+  color: #42b983;
 }
 
 .task-actions {
@@ -213,6 +214,10 @@ button.delete {
 
 .task-body {
   text-align: left;
+}
+
+.description {
+  color: #666;
 }
 
 .due-date {
