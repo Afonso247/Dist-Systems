@@ -35,7 +35,7 @@
               <h3>{{ task.title }}</h3>
               <div class="task-actions">
                 <button @click="toggleComplete(task)" :class="{ 'completed': task.completed }">
-                  {{ task.completed ? 'Completed' : 'Mark Complete' }}
+                  {{ task.completed ? 'Concluído' : 'Marcar Concluído' }}
                 </button>
                 <button @click="deleteTask(task.id)" class="delete">Remover</button>
               </div>
@@ -44,7 +44,7 @@
             <div class="task-body">
               <p v-if="task.description" class="description">{{ task.description }}</p>
               <p v-if="task.dueDate" class="due-date">
-                Vence em: {{ new Date(task.dueDate).toLocaleDateString() }}
+                Vence em: {{ new Date(task.dueDate).toLocaleDateString('pt-BR', { timeZone: 'UTC' }) }}
               </p>
             </div>
           </div>
